@@ -1,4 +1,4 @@
-# The Embedded Extended Oberon operating 
+# The Embedded Extended Oberon operating system
 The Extended Oberon System is a revision of the *Project Oberon 2013* operating system and its compiler.
 
 The Embedded Extended Oberon System is a port of the Extended Oberon System to Linux on ARMv7, MIPS32 and RISC-V32
