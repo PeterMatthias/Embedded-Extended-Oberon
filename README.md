@@ -1,24 +1,9 @@
-# The Extended Oberon operating system and the programming language Oberon-2 (2020 Edition)
+# The Embedded Extended Oberon operating 
 The Extended Oberon System is a revision of the *Project Oberon 2013* operating system and its compiler.
 
-Note: In this repository, the term "Project Oberon 2013" refers to a re-implementation of the original "Project Oberon" on an FPGA development board around 2013, as published at www.projectoberon.com.
+The Embedded Extended Oberon System is a port of the Extended Oberon System to Linux on ARMv7, MIPS32 and RISC-V32
 
-Features
-
-* Programming language Oberon-2 (2020 Edition) defined as a superset of the Oberon-07 language
-* Safe module unloading and module finalization
-* System building and maintenance tools
-* Smooth line scrolling with variable line spaces
-* Multiple logical displays
-* Improved decoder tools
-* Improved import/export, e.g. import any number of modules and in any order
-* Simple batch execution facility
-
-**Last release:** 1.10.2024 / Extended-Oberon-1.16
-
-**Last update:** 1.10.2024
-
-The file [**S3RISCinstall.tar.gz**](Documentation/S3RISCinstall.tar.gz) always reflects the *latest* version of Extended Oberon.
+**Last update:** 2024-11-24
 
 The file [**EOS_news.txt**](EOS_news.txt) describes the changes made to Extended Oberon.
 
@@ -26,27 +11,42 @@ Documentation: [**Documentation**](Documentation)
 
 ------------------------------------------------------
 
-# Instructions for running Extended Oberon
+# Instructions for running Embedded Extended Oberon
 
-**To obtain Extended Oberon**:
+**To obtain Embedded Extended Oberon**:
 
-- Download the compressed archive [**S3RISCinstall.tar.gz**](Documentation/S3RISCinstall.tar.gz) from this repository
+Download following files from this repository:
+ [**RISC.dsk**](RISC.dsk), [**Modules.elf.arm**](Modules.elf.arm), [**pcsend.elf**](pcsend.elf)
 
-**To run Extended Oberon in an emulator** (e.g., http://github.com/pdewacht/oberon-risc-emu):
+**To run Embedded Extended Oberon** 
 
-- Backup your existing *S3RISCinstall* directory
-- Uncompress the downloaded archive in the emulator directory *S3RISCinstall*
-  - On Unix/Linux/Mac, run the command **tar xvzf S3RISCinstall.tar.gz**
-  - On Windows, use one of the available Zip tools such as *WinZip*, *7-Zip*, ...
-- Restart the emulator
+- make Modules.elf.arm and pcsend.elf executable
+- all three files should be in same directory
+- run "./Modules.elf.arm"
 
-**To run Extended Oberon on a FGPA development board**:
+Following invironment variables are used:
+- ODISK=diskname # disk name
+- OWIDTH=1024  # Display width
+- HEIGHT=800  # Display Heigh
 
-- Uncompress the downloaded archive
-  - On Unix/Linux/Mac, run the command **tar xvzf S3RISCinstall.tar.gz**
-  - On Windows, use one of the available Zip tools, such as *WinZip*, *7-Zip*, ...
-- Transfer the file *RISC.img* to an SD-card as a *raw image* (do not simply copy the file)
-  - On Unix/Linux/Mac, run the command **ls -l RISC.img** (to get the file size of *RISC.img*) followed by the command **dd if=RISC.img of=/dev/sdc bs=1024 count=filesize** (replace */dev/sdc* with the device name on your system and *filesize* with the actual file size)
-  - On Windows, use one of the available SD tools, such as *Win32 Disk Imager*, ...
-- Insert the SD-card in the FPGA board/daughterboard, verify that everything is connected
-- Cold-start the FPGA board/daughterboard by pressing the appropriate button on the board
+E2O runs well on Raspberry Pi with X11 Windows. Wayland still is buggy on RPi. It runs also well on current Fedora with Wayland.
+On X86, qemu can be invoked automatically. If not, run "qemu-arm-static ./Modules.elf.arm" . With environment variables e.g. 
+"ODISK=diskname OWIDTH=800 OHEIGHT=600 qemu-arm-static ./Modules.elf.arm" 
+
+First thing you probably want to do is to remove zoom at display:
+- open E2O.32.Display.Mod
+- set Zoom to 1 and store the file
+- compile it with "OAP.Compile E2O.32.Display.Mod~"
+- restart the system
+
+This distribution does not include binaries for MIPS and RISC-V. You can easily compile them from within ARM or even RISC5. 
+See instruction at BuildE2O.Tool
+
+pcsend.elf copies files from Oberon to Linux like "ODISK=diskname ./psend.elf file1 file2 file3 ..." When rename to pcreceive.elf, 
+it copies files from Linux to Oberon disk.
+
+Warning: This system has known and unknown bugs. Known bug is that FPU registers are not saved e.g. when a function returns a REAL value 
+as a direct argument of a procedure. ARM version does not always start. When it gives a memory fault, restart it. Once started, it should be stable.
+Currently, only the disk file format is supported. Image format as in EO will be added.
+
+All souces are in the disk file. The sources will be added seperately here later. As well as technical information.
