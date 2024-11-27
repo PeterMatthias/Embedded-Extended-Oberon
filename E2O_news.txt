@@ -1,0 +1,3 @@
+2024-11-27  Disk Image format supported
+2024-11-27  ARM: start crash fixed
+2024-11-27  ARM: fixed crash at NEW for open arrays 
