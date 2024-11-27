@@ -42,11 +42,10 @@ First thing you probably want to do is to remove zoom at display:
 This distribution does not include binaries for MIPS and RISC-V. You can easily compile them from within ARM or even RISC5. 
 See instruction at BuildE2O.Tool
 
-pcsend.elf copies files from Oberon to Linux like "ODISK=diskname ./psend.elf file1 file2 file3 ..." When rename to pcreceive.elf, 
+pcsend.elf copies files from Oberon to Linux like "ODISK=diskname ./psend.elf file1 file2 file3 ..." When renamed to pcreceive.elf, 
 it copies files from Linux to Oberon disk.
 
 Warning: This system has known and unknown bugs. Known bug is that FPU registers are not saved e.g. when a function returns a REAL value 
-as a direct argument of a procedure. ARM version does not always start. When it gives a memory fault, restart it. Once started, it should be stable.
-Currently, only the disk file format is supported. Image format as in EO will be added.
+as a direct argument of a procedure. 
 
-All souces are in the disk file. The sources will be added seperately here later. As well as technical information.
+All souces are in the disk file. Technical information will be added later.
