@@ -5,7 +5,7 @@ The Embedded Extended Oberon System (short E2O) is a port of the [Extended Obero
 The Extended Oberon System is a revision of the *Project Oberon 2013* operating system and its compiler.
 
 
-The file [E2O_news.md](EOS_news.md) describes the changes made to Embedded Extended Oberon.
+The file [E2O_news.md](E2O_news.md) describes the changes made to Embedded Extended Oberon.
 
 
 ## Instructions for running Embedded Extended Oberon
