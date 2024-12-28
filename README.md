@@ -1,6 +1,6 @@
 # The Embedded Extended Oberon operating system
 
-The Embedded Extended Oberon System (short E2O) is a port of the [Extended Oberon System]((https://github.com/andreaspirklbauer/Oberon-extended)) to Linux on ARMv7, MIPS32 and RISC-V32/RISC-V64. Look there for latest changes of the system. I strive to fetch up any changes from there.
+The Embedded Extended Oberon System (short E2O) is a port of the [Extended Oberon System](https://github.com/andreaspirklbauer/Oberon-extended) to Linux on ARMv7, MIPS32 and RISC-V32/RISC-V64. Look there for latest changes of the system. I strive to fetch up any changes from there.
 
 The Extended Oberon System is a revision of the *Project Oberon 2013* operating system and its compiler.
 
