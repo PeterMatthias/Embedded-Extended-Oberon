@@ -66,8 +66,7 @@ MIPS uses branch delay slot. It is a miracle that MIPS works mostly without chan
 
 ### RISC-V
 
-Branch distance is only +-4pm
-kB. An extension is implemented for larger branches. Encoding of jump, branches and stores are irregular. Default setup is for small Modules space < 1MB with a single instruction jump. A large code model is implemented with access to 32bit with two instruction jumps, but not tested. Local variables > 2K take 3 instructions. RISC-V supports compressed instruction format. This is currently not supported by E2O. With compressed instructions, these 3 instructions usually would take 64bit and could probably be fused in real implementations. Usually, half of the instructions could use compressed format, reducing code size by 25% and improving instruction cache hit rate. A strange decision was made by RISC-V developers by making 32bit system incompatible with 64bit system.
+Branch distance is only +-4kB. An extension is implemented for larger branches. Encoding of jump, branches and stores are irregular. Default setup is for small Modules space < 1MB with a single instruction jump. A large code model is implemented with access to 32bit with two instruction jumps, but not tested. Local variables > 2K take 3 instructions. RISC-V supports compressed instruction format. This is currently not supported by E2O. With compressed instructions, these 3 instructions usually would take 64bit and could probably be fused in real implementations. Usually, half of the instructions could use compressed format, reducing code size by 25% and improving instruction cache hit rate. A strange decision was made by RISC-V developers by making 32bit system incompatible with 64bit system.
 
 
 
